@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Gift</title>
+    <link href="./output.css" rel="stylesheet">
+</head>
+
+<body class="mocha bg-flamingo">
+    <div class="min-h-screen grid mocha">
+        <main class="flex flex-col justify-center items-center p-6">
+
+            <div
+                class="bg-gradient-to-b from-base to-crust outline-pink outline-4 text-text flex w-auto flex-col items-center justify-center shadow-[var(--tw-ring-offset-shadow,0_0_#0000),var(--tw-ring-shadow,0_0_#0000),var(--tw-shadow)] outline p-6 rounded-3xl">
+                <section>
+                    <h1 class="text-3xl font-bold underline">
+                        Virtual Gift.
+                    </h1>
+                    <h1 class="bg-base text-pink">by Giiki_S2 ヾ(・ω・)メ(・ω・)ノ</h1>
+                </section>
+
+                <h1 class="text-subtext0">From: Giiki_S2 ଲ(ⓛ ω ⓛ)ଲ</h1>
+                <p class="text-subtext0">To: Nintendosss (◉Θ◉)</p>
+
+                <div class="daily-gift">
+                    <div class="scene shadow-sm">
+                        <div class="cube ">
+                            <div class="bg-gradient-to-b from-base to-crust outline-pink outline-4 text-text flex w-auto flex-col items-center justify-center shadow-[var(--tw-ring-offset-shadow,0_0_#0000),var(--tw-ring-shadow,0_0_#0000),var(--tw-shadow)] outline p-6 rounded-3xl cube__face gift">
+                            <a href="">
+                                <img class="p-2" src="../public/zip.png">
+                            </a>
+                            </div>
+
+                            <div class="cube__face cube__face--front"><img src="../public/present_side.png" alt="">
+                            </div>
+                            <div class="cube__face cube__face--back"><img src="../public/present_side.png" alt=""></div>
+                            <div class="cube__face cube__face--right"><img src="../public/present_side.png" alt="">
+                            </div>
+                            <div class="cube__face cube__face--left"><img src="../public/present_side.png" alt=""></div>
+                            <div class="cube__face cube__face--top"><img src="../public/present_top.png" alt=""></div>
+                            <div class="cube__face cube__face--lace1"><img src="../public/present_lace.png" alt="">
+                            </div>
+                            <div class="cube__face cube__face--lace2"><img src="../public/present_lace.png" alt="">
+                            </div>
+                            <div class="cube__face cube__face--tag">
+                                <!-- <img src="../public/tag.png" alt=""> -->
+                                <p class="text-wrap text-[16px] w-full h-full p-10 pt-3 pl-2 pr-2 text-rose-950 bg-center bg-no-repeat bg-contain bg-[url('../public/tag.png')]">to: Nintendosss</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </main>
+    </div>
+
+
+
+    <script>
+        var scene = document.getElementsByClassName("scene")[0]
+        var item = document.getElementsByClassName("cube")[0]
+        scene.addEventListener('mouseover', () => {
+            if (item.classList.contains("clicked")) {
+                return console.log("already clicked")
+            }
+
+            item.classList.remove('active')
+
+            item.classList.add('view')
+        })
+
+
+        // play in reverse
+        scene.addEventListener('mouseleave', () => {
+
+            if (item.classList.contains("clicked")) {
+                return console.log("already clicked")
+            }
+
+            // item.classList.add('in-active')
+            item.classList.remove('view')
+            item.classList.add('unview')
+
+            // item.classList.remove('view')
+
+            // item.classList.add('active')
+
+            // // force dom update
+            // setTimeout(() => {
+            //     item.classList.add('active')
+            // }, 5)
+
+            item.addEventListener('animationend', onanimationend)
+        })
+
+        scene.addEventListener('click', () => {
+            item.classList.remove("active")
+            item.classList.remove("view")
+            item.classList.remove("unview")
+            item.classList.add("clicked")
+            var gift = document.getElementsByClassName("gift")[0]
+            gift.classList.add("gift-visible")
+        })
+        function onanimationend() {
+            // item.classList.remove('active', 'in-active')
+            item.classList.add('active')
+            item.classList.remove('unview')
+            item.removeEventListener('animationend', onanimationend)
+        }
+    </script>
+</body>
+
+</html>
